@@ -1,0 +1,46 @@
+/*
+ * Breakpoints
+ */
+
+$breakpoint-xxl: 1280px;
+$breakpoint-xl: 1200px;
+$breakpoint-lg: 991px;
+$breakpoint-md: 768px;
+$breakpoint-mds: 560px;
+$breakpoint-sm: 390px;
+
+@mixin xxl {
+	@media (max-width: #{$breakpoint-xxl}) {
+		@content;
+	}
+}
+
+@mixin xl {
+	@media (max-width: #{$breakpoint-xl}) {
+		@content;
+	}
+}
+
+@mixin lg {
+	@media (max-width: #{$breakpoint-lg}) {
+		@content;
+	}
+}
+
+@mixin md {
+	@media (max-width: #{$breakpoint-md}) {
+		@content;
+	}
+}
+
+@mixin mds {
+	@media (max-width: #{$breakpoint-mds}) {
+		@content;
+	}
+}
+
+@mixin sm {
+	@media (max-width: #{$breakpoint-sm}) {
+		@content;
+	}
+}

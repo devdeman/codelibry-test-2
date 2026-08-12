@@ -1,0 +1,72 @@
+.cards-grid {
+	&__header > div {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+		margin-bottom: 60px;
+
+		@include md {
+			flex-direction: column;
+			gap: 16px;
+			margin-bottom: 30px;
+		}
+	}
+
+	&__label {
+		margin-bottom: 16px;
+		font-family: var(--font-primary);
+		font-size: var(--size-sm);
+		font-weight: var(--font-bold);
+		text-transform: uppercase;
+		color: var(--color-primary);
+	}
+
+	&__title {
+		color: var(--color-black);
+	}
+
+	.button {
+		padding-right: 4px;
+	}
+
+	&__grid {
+		display: grid;
+		gap: 30px;
+
+		&--3 {
+			grid-template-columns: repeat(3, 1fr);
+
+			@include lg {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			@include md {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		&--4 {
+			grid-template-columns: repeat(4, 1fr);
+
+			@include xl {
+				grid-template-columns: repeat(3, 1fr);
+			}
+
+			@include lg {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			@include md {
+				grid-template-columns: 1fr;
+			}
+		}
+	}
+
+	@include md {
+		&__title,
+		&__label {
+			text-align: center;
+		}
+	}
+}

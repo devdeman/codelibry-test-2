@@ -1,0 +1,548 @@
+// ─── Global CF7 form styles (shared by all blocks with CF7 forms) ─────────────
+
+.wpcf7-form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.cf7-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+}
+
+.cf7-field {
+	display: flex;
+	flex-direction: column;
+
+	label {
+		font-size: var(--size-sm);
+		font-weight: var(--font-bold);
+		line-height: var(--leading-flat);
+		color: var(--color-dark);
+		margin-bottom: 7px;
+	}
+
+	.wpcf7-form-control-wrap {
+		display: block;
+	}
+
+	input[type='text'],
+	input[type='email'],
+	input[type='tel'],
+	input[type='date'],
+	textarea,
+	select {
+		color: var(--color-dark);
+		caret-color: var(--color-dark);
+		border-color: var(--color-gray-light);
+		padding: 12px;
+
+		&:focus {
+			border-color: var(--color-primary);
+		}
+		&::placeholder {
+			color: var(--color-gray);
+		}
+	}
+
+	input[type='date'] {
+		height: 44px;
+	}
+
+	textarea {
+		height: 120px;
+	}
+}
+
+.cf7-select-wrap {
+	position: relative;
+
+	select {
+		appearance: none;
+		-webkit-appearance: none;
+		cursor: pointer;
+		color: var(--color-gray);
+		padding: 12px;
+		border: 1px solid var(--color-gray-light);
+		width: 100%;
+		height: 44px;
+
+		&:focus {
+			border-color: var(--color-primary);
+		}
+
+		option {
+			color: var(--color-dark);
+		}
+
+		option[value=""] {
+			color: var(--color-gray);
+		}
+
+		&:has(option:checked:not([value=""])) {
+			color: var(--color-dark);
+		}
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		right: 12px;
+		top: 11px;
+		width: 24px;
+		height: 24px;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3E%3Cmask id='a' width='24' height='24' x='0' y='0' maskUnits='userSpaceOnUse' style='mask-type:alpha'%3E%3Cpath fill='%23d9d9d9' d='M0 0h24v24H0z'/%3E%3C/mask%3E%3Cg mask='url(%23a)'%3E%3Cpath fill='%231c1b1f' d='m12 15.4-6-6L7.4 8l4.6 4.6L16.6 8 18 9.4z'/%3E%3C/g%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-size: contain;
+		pointer-events: none;
+	}
+}
+
+.cf7-date-wrap {
+	height: 44px;
+	position: relative;
+
+	input[type='date'] {
+		&::-webkit-calendar-picker-indicator {
+			cursor: pointer;
+			opacity: 0.6;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+
+	// make text transparent to show our own placeholder
+	// -webkit-text-fill-color overrides color in WebKit/Safari
+	&:not(.has-value):not(:focus-within) input[type='date'] {
+		color: transparent;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.cf7-date-placeholder {
+		position: absolute;
+		top: 14px;
+		left: 12px;
+		display: none;
+		pointer-events: none;
+		color: var(--color-gray);
+		font-size: inherit;
+		line-height: 1;
+	}
+
+	&:not(.has-value):not(:focus-within) .cf7-date-placeholder {
+		display: flex;
+	}
+}
+
+.cf7-field--checkbox {
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 12px;
+
+	.wpcf7-form-control-wrap {
+		display: flex;
+		align-items: flex-start;
+		gap: 12px;
+	}
+
+	input[type='checkbox'] {
+		margin: 0 5px -6px 0;
+		appearance: none;
+		-webkit-appearance: none;
+		width: 20px;
+		height: 20px;
+		min-width: 20px;
+		border: 2px solid var(--color-border-gray);
+		border-radius: 2px;
+		background: var(--color-white);
+		cursor: pointer;
+		position: relative;
+		transition: var(--transition-base);
+
+		&:checked {
+			background: var(--color-primary);
+			border-color: var(--color-primary);
+
+			&::after {
+				content: '';
+				position: absolute;
+				left: 5px;
+				top: 1px;
+				width: 6px;
+				height: 11px;
+				border: 2px solid var(--color-white);
+				border-top: none;
+				border-left: none;
+				transform: rotate(45deg);
+			}
+		}
+
+		&:focus {
+			outline: 2px solid var(--color-primary);
+			outline-offset: 2px;
+		}
+
+		&:focus:not(:focus-visible) {
+			outline: none;
+		}
+	}
+
+	.wpcf7-list-item {
+		margin: 0;
+	}
+
+	.wpcf7-list-item-label {
+		font-size: var(--size-sm);
+		color: var(--color-gray);
+		font-weight: var(--font-regular);
+		line-height: var(--leading-relaxed);
+
+		a {
+			color: var(--color-primary);
+			font-weight: var(--font-bold);
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.cf7-field--file {
+	margin-top: -4px;
+
+	.cf7-file-wrap {
+		position: relative;
+		border: 1px dashed var(--color-gray-light);
+		border-radius: var(--radius-xs);
+		padding: 47px 24px;
+		cursor: pointer;
+		transition: border-color var(--transition-base);
+
+		&:hover {
+			border-color: var(--color-primary);
+		}
+
+		.wpcf7-form-control-wrap {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 1;
+			display: block;
+
+			input[type='file'] {
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				cursor: pointer;
+				border: none;
+				padding: 0;
+				border-radius: 0;
+				-webkit-appearance: none;
+				appearance: none;
+			}
+		}
+
+		.cf7-file-placeholder {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 7px;
+			pointer-events: none;
+
+			&[hidden] {
+				display: none;
+			}
+
+			p {
+				color: var(--color-gray);
+			}
+
+			&::before {
+				content: '';
+				display: block;
+				width: 24px;
+				height: 24px;
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23ff6a00' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M18.75 21H5.25a.75.75 0 0 1-.75-.75V3.75A.75.75 0 0 1 5.25 3h9l5.25 5.25v12a.75.75 0 0 1-.75.75'/%3E%3Cpath stroke='%23ff6a00' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M14.25 3v5.25h5.25M9.75 13.5 12 11.25l2.25 2.25M12 17.25v-6'/%3E%3C/svg%3E");
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+		}
+	}
+}
+
+.cf7-file-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+	pointer-events: none;
+	z-index: 0;
+
+	.cf7-file-item {
+		display: flex;
+		align-items: center;
+		font-size: var(--size-sm);
+
+		&::before {
+			margin: 0 3px 2px 0;
+			content: '';
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			flex-shrink: 0;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E05C00'%3E%3Cpath d='M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 2l5 5h-5V4z'/%3E%3C/svg%3E");
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+	}
+
+	.cf7-file-name {
+		color: var(--color-dark);
+		font-weight: var(--font-bold);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 75%;
+	}
+
+	.cf7-file-ext {
+		color: var(--color-primary);
+		font-weight: var(--font-bold);
+		flex-shrink: 0;
+	}
+
+	.cf7-file-remove {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 22px;
+		height: 22px;
+		border-radius: 50%;
+		background: var(--color-white);
+		border: 1px solid var(--color-gray-light);
+		color: var(--color-gray);
+		flex-shrink: 0;
+	}
+}
+
+.wpcf7-submit {
+	width: 100%;
+	border: none;
+}
+
+.submit-button {
+	position: relative;
+}
+
+.wpcf7-spinner {
+	position: absolute;
+	left: -16px;
+	top: 16px;
+}
+
+.cf7-footnote {
+	font-size: var(--size-sm);
+	color: var(--color-gray);
+	margin: 1px 0 0;
+}
+
+.wpcf7-not-valid-tip {
+	display: block;
+	font-size: var(--size-xs, 12px);
+	color: #e53e3e;
+	margin-top: 4px;
+}
+
+.section {
+	.wpcf7 form {
+		.wpcf7-response-output {
+			padding: 0;
+			margin: 8px 0 0 0;
+			font-size: var(--size-h6);
+			color: var(--color-dark);
+			border: none;
+
+			&.wpcf7-mail-sent-ok {
+				background: #f0fdf4;
+				color: #166534;
+			}
+
+			&.wpcf7-validation-errors,
+			&.wpcf7-mail-sent-ng {
+				background: #fff5f5;
+				color: #9b2c2c;
+			}
+		}
+	}
+}
+
+@include md {
+	.cf7-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.cf7-date-wrap:has(.wpcf7-not-valid-tip) {
+		height: 56px;
+	}
+
+	.cf7-field--file {
+		.cf7-file-wrap {
+			padding: 30px 26px;
+		}
+	}
+}
+
+// ─── Form Section block layout ────────────────────────────────────────────────
+
+.form-section {
+	&__inner {
+		padding: 75px 0;
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		gap: 30px;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 66%;
+			height: 100%;
+			background: var(--color-black);
+			z-index: -1;
+			border-radius: var(--radius-xs);
+		}
+	}
+
+	&__box {
+		padding: 0 24px 0 60px;
+
+		.buttons {
+			margin-top: 40px;
+		}
+	}
+
+	&__content {
+		h2 {
+			margin-bottom: 32px;
+		}
+
+		h4 {
+			margin-bottom: 16px;
+			font-size: var(--size-sm);
+			line-height: var(--leading-flat);
+			font-weight: var(--font-bold);
+			text-transform: uppercase;
+		}
+
+		p {
+			line-height: var(--leading-relaxed);
+		}
+	}
+
+	&__contacts {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		margin-top: 40px;
+	}
+
+	&__contact {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: var(--size-h6);
+		color: var(--color-white);
+		line-height: var(--leading-relaxed);
+
+		a {
+			color: var(--color-white);
+			text-decoration: none;
+			transition: var(--transition-base);
+
+			&:hover {
+				color: var(--color-primary);
+			}
+		}
+
+		&-icon {
+			width: 32px;
+			height: 32px;
+			flex-shrink: 0;
+			color: var(--color-primary);
+
+			svg {
+				width: 32px;
+				height: 32px;
+			}
+		}
+	}
+
+	&__card {
+		padding: 33px 31px 32px 31px;
+		background: var(--color-white);
+		border: 1px solid var(--color-border-gray);
+
+		.wpcf7-submit {
+			margin-top: 2px;
+			width: 100%;
+		}
+	}
+
+	&__label {
+		margin-bottom: 23px;
+	}
+
+	@include lg {
+		&__inner {
+			padding: 50px 0 0 0;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+
+			&::after {
+				width: 100%;
+				height: 60%;
+			}
+		}
+
+		&__box {
+			padding: 0 18px;
+		}
+
+		&__card {
+			margin: 0 18px;
+		}
+	}
+
+	@include md {
+		&__inner {
+			gap: 2rem;
+
+			&::after {
+				height: 55%;
+			}
+		}
+
+		&__box {
+			padding: 0 16px;
+		}
+
+		&__card {
+			margin: 0 16px;
+			padding: 22px 16px;
+		}
+	}
+}

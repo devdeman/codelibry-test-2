@@ -1,0 +1,165 @@
+.testimonials-slider {
+	&__inner {
+		padding: 60px 0 60px 60px;
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 66%;
+			height: 100%;
+			background: var(--color-black);
+			z-index: -1;
+			border-radius: var(--radius-xs);
+		}
+	}
+
+	&__text {
+		max-width: 530px;
+
+		h2 {
+			margin-bottom: 40px;
+		}
+
+		p {
+			margin-bottom: 1rem;
+			font-family: var(--font-primary);
+			font-size: var(--size-sm);
+			font-weight: var(--font-bold);
+		}
+	}
+
+	&__header {
+		margin-bottom: 24px;
+		max-width: 547px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		&--box {
+			width: 100px;
+			position: relative;
+		}
+	}
+
+	&__content {
+		max-width: 538px;
+		p {
+			margin-bottom: 32px;
+			font-size: 20px;
+			line-height: var(--leading-relaxed);
+		}
+	}
+
+	&__author {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		flex-wrap: wrap;
+
+		h3 {
+			font-size: 24px;
+		}
+	}
+
+	.swiper-slide {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 30px;
+	}
+
+	&__image {
+		margin-top: -217px;
+		img {
+			min-width: 625px;
+			min-height: 469px;
+			border-radius: var(--radius-xs);
+			object-fit: cover;
+		}
+	}
+
+	&__pagination {
+		width: fit-content;
+		font-family: var(--font-primary);
+		font-size: 32px;
+		font-weight: var(--font-extra-bold);
+		line-height: var(--leading-normal);
+		color: var(--color-gray-light);
+		.swiper-pagination-current {
+			color: var(--color-white);
+		}
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next {
+		color: var(--color-white);
+
+		&.swiper-button-disabled {
+			color: var(--color-gray-light);
+			opacity: 1;
+		}
+
+		&::after {
+			font-size: 12px;
+			font-weight: var(--font-bold);
+		}
+	}
+
+	.swiper-button-prev {
+		top: 17px;
+		left: -32px;
+	}
+
+	.swiper-button-next {
+		top: 17px;
+		right: 8px;
+	}
+
+	@include xxl {
+		&__image {
+			margin-top: -280px;
+
+			img {
+				min-width: 100%;
+				min-height: auto;
+				height: 100%;
+			}
+		}
+
+		&__header {
+			max-width: 410px;
+		}
+
+		&__text {
+			max-width: 480px;
+		}
+	}
+
+	@include lg {
+		&__inner {
+			padding: 50px 18px;
+
+			&::after {
+				width: 100%;
+			}
+		}
+
+		.swiper-slide {
+			grid-template-columns: 1fr;
+			gap: 36px;
+		}
+
+		&__image {
+			margin-top: 0;
+		}
+
+		&__header,
+		&__text,
+		&__content {
+			max-width: 100%;
+		}
+	}
+}

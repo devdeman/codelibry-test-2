@@ -1,0 +1,147 @@
+.image-text {
+	&__inner {
+		padding: 75px 0;
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		gap: 27px;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 66%;
+			height: 100%;
+			background: var(--color-black);
+			z-index: -1;
+			border-radius: var(--radius-xs);
+		}
+	}
+
+	&__box {
+		padding: 0 64px 0 32px;
+
+		.numbers__item {
+			&::after {
+				right: -42px;
+				background-color: rgba(255, 255, 255, 0.2);
+			}
+
+			h2 {
+				margin-bottom: 16px;
+				font-size: 32px;
+				color: var(--color-white);
+				img {
+					width: 23px;
+					height: 22px;
+					margin-left: rem(1);
+				}
+			}
+			p {
+				font-size: var(--size-sm);
+				line-height: 130%;
+				color: var(--color-gray-light);
+			}
+		}
+	}
+
+	&__stats {
+		margin: 32px 0 40px 0;
+		display: flex;
+		justify-content: space-between;
+		gap: rem(8);
+	}
+
+	&__media {
+		margin: 0;
+		order: 0;
+	}
+
+	&__img {
+		width: 100%;
+		height: auto;
+		display: block;
+		border-radius: var(--radius-xs);
+	}
+
+	&__content {
+		h2 {
+			margin-bottom: 32px;
+		}
+		h4 {
+			margin-bottom: 16px;
+			font-size: var(--size-sm);
+			line-height: var(--leading-flat);
+			font-weight: var(--font-bold);
+			text-transform: uppercase;
+		}
+		p {
+			line-height: var(--leading-relaxed);
+		}
+	}
+
+	@include xxl {
+		&__inner {
+			padding: 50px 0;
+			gap: 30px;
+		}
+
+		&__box {
+			padding: 0 30px 0 0;
+		}
+	}
+
+	@include xl {
+		&__box {
+			.numbers__item h2 {
+				font-size: 28px;
+			}
+		}
+	}
+
+	@include lg {
+		&__inner {
+			padding: 0 0 50px 0;
+			grid-template-columns: 1fr;
+
+			&::after {
+				width: 100%;
+			}
+		}
+
+		&__inner {
+			gap: 50px;
+		}
+
+		&__box {
+			padding: 0 18px;
+			.numbers__item::after {
+				right: -120px;
+			}
+		}
+	}
+
+	@include md {
+		&__box {
+			.numbers__item::after {
+				right: -60px;
+			}
+		}
+	}
+
+	@include mds {
+		&__box {
+			.numbers__item::after {
+				bottom: -12px;
+				right: auto;
+			}
+		}
+
+		&__stats {
+			flex-direction: column;
+			gap: 20px;
+		}
+	}
+}

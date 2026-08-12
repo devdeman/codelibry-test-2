@@ -1,0 +1,17 @@
+.section {
+	padding: 5rem 0;
+}
+
+.section-top {
+	padding-top: 2.5rem;
+}
+
+.section-bottom {
+	padding-bottom: 2.5rem;
+}
+
+@include md {
+	.section {
+		padding: 3.75rem 0;
+	}
+}

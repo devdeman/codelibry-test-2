@@ -1,0 +1,75 @@
+html {
+	caret-color: var(--color-primary);
+	scroll-behavior: smooth;
+}
+
+body {
+	overflow-x: hidden;
+	background: var(--color-white);
+	color: var(--color-white);
+	font-size: var(--size-md);
+	font-family: var(--font-secondary);
+	font-weight: var(--font-regular);
+	line-height: var(--leading-flat);
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+
+	&:has(.mobile-menu.open) {
+		overflow: hidden;
+	}
+}
+
+footer {
+	margin-top: auto;
+}
+
+main {
+	min-height: 70vh;
+	min-height: 70dvh;
+}
+
+::selection {
+	background-color: var(--color-primary);
+	color: var(--color-white);
+}
+
+:target {
+	scroll-margin-block: 5vh;
+}
+
+:focus {
+	outline: none;
+}
+
+:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 0.2lh;
+}
+
+a:has(img) > img {
+	transition: var(--transition-base);
+	filter: none;
+}
+
+a:has(img):hover > img,
+a:has(img):focus-visible > img {
+	filter: grayscale(100%);
+}
+
+.team-block,
+.testimonials-grid,
+.awards-block,
+.form-section,
+.warranty-form,
+.content-doc,
+.gallery-block {
+	&__label {
+		font-family: var(--font-primary);
+		font-size: var(--size-sm);
+		font-weight: var(--font-bold);
+		text-transform: uppercase;
+		color: var(--color-primary);
+		margin-bottom: 16px;
+	}
+}

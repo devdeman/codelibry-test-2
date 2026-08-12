@@ -1,0 +1,54 @@
+/*
+ * Simple Container class
+ *
+ * https://codepen.io/Roma13012003/pen/QwWazvq
+ */
+
+@mixin container {
+	margin-inline: auto;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	max-width: var(--container-md);
+}
+
+.container {
+	@include container;
+	max-width: var(--container-md);
+}
+
+.container-sm {
+	@include container;
+	max-width: var(--container-sm);
+}
+
+.container-lg {
+	@include container;
+	max-width: var(--container-lg);
+}
+
+.cover {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	min-block-size: calc(100vh - 124px);
+	min-block-size: calc(100svh - 124px);
+
+	@include lg {
+		min-block-size: calc(100vh - 92px);
+		min-block-size: calc(100svh - 92px);
+	}
+
+	@include mds {
+		min-block-size: auto;
+		min-block-size: auto;
+	}
+}
+
+@include mds {
+	.hero-home {
+		.cover {
+			min-block-size: 100vh;
+			min-block-size: 100svh;
+		}
+	}
+}

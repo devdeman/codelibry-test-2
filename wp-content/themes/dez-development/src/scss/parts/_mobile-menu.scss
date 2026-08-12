@@ -1,0 +1,167 @@
+.mobile-menu {
+	background-color: var(--color-light);
+	padding: 0.5rem 1rem 2rem 1rem;
+	height: 100%;
+	overflow-y: auto;
+	position: fixed;
+
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	justify-content: space-between;
+
+	top: 0;
+	left: 0;
+	width: 100%;
+	max-width: 25rem;
+	z-index: 200;
+	box-shadow: var(--shadow-base);
+	transition: var(--transition-base);
+	transform: translateX(-100%);
+	pointer-events: none;
+
+	&.open {
+		transform: translateX(0);
+		pointer-events: all;
+		box-shadow: 340px 0 500px rgba(0, 0, 0, 0.25);
+	}
+
+	.popup__close {
+		top: 1.5rem;
+		right: 1.5rem;
+	}
+
+	// .container {
+	// 	margin: 0;
+	// 	height: 100%;
+	// 	display: flex;
+	// 	flex-direction: column;
+	// 	gap: 12px;
+	// 	justify-content: space-between;
+	// }
+
+	&__menu {
+		.menu {
+			display: flex;
+			flex-direction: column;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.menu-item {
+			list-style: none;
+
+			> a {
+				display: block;
+				padding: 0.875rem 0;
+				font-size: 1.125rem;
+				font-weight: 500;
+				text-decoration: none;
+				color: var(--color-black);
+				transition: opacity 0.2s ease;
+				flex: 1;
+
+				&:hover {
+					opacity: 0.7;
+				}
+			}
+		}
+
+		// ── Accordion submenu ─────────────────────────────────────────────
+		.menu-item-has-children {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+
+			> a {
+				padding-right: 0.5rem;
+			}
+
+			// Toggle button injected by JS
+			> .submenu-toggle {
+				@include reset-button;
+				width: 40px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-shrink: 0;
+				cursor: pointer;
+				margin-left: auto;
+				border-radius: var(--radius-xs);
+				transition: background 0.2s ease;
+
+				&::after {
+					content: '';
+					display: block;
+					width: 24px;
+					height: 24px;
+					background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3E%3Cmask id='a' width='24' height='24' x='0' y='0' maskUnits='userSpaceOnUse' style='mask-type:alpha'%3E%3Cpath fill='%23d9d9d9' d='M0 0h24v24H0z'/%3E%3C/mask%3E%3Cg mask='url(%23a)'%3E%3Cpath fill='%231c1b1f' d='m12 15.4-6-6L7.4 8l4.6 4.6L16.6 8 18 9.4z'/%3E%3C/g%3E%3C/svg%3E");
+					background-repeat: no-repeat;
+					background-size: contain;
+					transition: transform 0.3s ease;
+				}
+
+				&:hover {
+					background: rgba(0, 0, 0, 0.06);
+				}
+			}
+
+			&.menu-open > .submenu-toggle::after {
+				transform: rotate(180deg);
+			}
+
+			// Submenu accordion panel
+			// JS wraps <ul.sub-menu> in <div.sub-menu-inner> — the div is the grid container
+			> .sub-menu-inner {
+				flex-basis: 100%;
+				display: grid;
+				grid-template-rows: 0fr;
+				transition: grid-template-rows 0.32s ease;
+				overflow: hidden;
+			}
+
+			&.menu-open > .sub-menu-inner {
+				grid-template-rows: 1fr;
+			}
+
+			.sub-menu {
+				min-height: 0;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+
+				.menu-item {
+					list-style: none;
+
+					> a {
+						padding: 0.625rem 0 0.625rem 1rem;
+						font-size: 1rem;
+						font-weight: 400;
+						color: var(--color-gray);
+						border-left: 2px solid var(--color-border-gray);
+					}
+				}
+			}
+		}
+	}
+}
+
+.mobile-menu-overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 199;
+	background-color: rgba(0, 0, 0, 0.4);
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+
+	&.open {
+		opacity: 1;
+		pointer-events: all;
+	}
+}

@@ -1,0 +1,106 @@
+:root {
+	/*
+   * =================================================
+   *  Global Tokens
+   * =================================================
+   */
+
+	/*
+   * Colors
+   */
+	--color-black: #1a1a2e; /* Just pure black color */
+	--color-white: #ffffff; /* Just pure white color */
+
+	--color-dark: #2b2b2b; /* Usually used for text color (or opposite) */
+	--color-light: #fff7e9; /* Usually used for background color (or opposite) */
+
+	--color-primary: #ff6a00; /* Accent color. Usually button's bg color */
+	--color-primary-light: rgba(255, 106, 0, 0.1);
+	--color-secondary: #ffeece; /* Secondary main color. Sometimes is absent */
+
+	--color-gray: #787878;
+	--color-gray-light: #ababab;
+	--color-border-gray: rgba(26, 26, 46, 0.2);
+	--color-blue: #0057b8;
+	--color-blue-light: rgba(0, 87, 184, 0.1);
+	--color-success: green;
+	--color-warning: yellow;
+	--color-error: red;
+
+	/*
+   * Font Sizes
+   */
+	--size-h1: clamp(2.125rem, 6vw, 3.625rem); /* 34px → 58px */
+	--size-h2: clamp(1.75rem, 5vw, 46px); /* 28px -> 46px */
+	--size-h2s: clamp(1.75rem, 5vw, 52px); /* 28px -> 52px */
+	--size-h3: clamp(2.125rem, 3.5vw, 2.5rem); /* 34px → 40px */
+	--size-h4: clamp(1.375rem, 3vw, 2.125rem); /* 22px → 34px */
+	--size-h5: 1.375rem; /* 22px */
+	--size-h6: 1.125rem; /* 18px */
+
+	--size-md: 1rem; /* 16px */
+	--size-sm: 0.875rem; /* 14px */
+	--size-xs: 0.75rem; /* 12px */
+
+	/*
+   * Font Families
+   */
+	--font-primary: 'DM Sans', sans-serif;
+	--font-secondary: 'Nunito Sans', sans-serif;
+
+	/*
+   * Font Weights
+   */
+	--font-extra-bold: 700;
+	--font-bold: 600;
+	--font-medium: 500;
+	--font-regular: 400;
+
+	/*
+   * Line Heights
+   */
+	--leading-flat: 1; /* very compact */
+	--leading-normal: 1.1; /* default comfortable reading */
+	--leading-large: 1.3;
+	--leading-relaxed: 1.5; /* more open, good for body text */
+	--leading-loose: 1.625; /* airy, headings or large blocks */
+
+	/*
+   * Containers Width
+   */
+	--container-sm: 980px; /* Used for Content Pages ("Privacy Policy", "Cookie Policy") */
+	--container-md: 1200px; /* The most common container width */
+	--container-lg: 1312px; /* Can be used for wider Header or Footer */
+
+	/*
+   * Border Radius
+   */
+	--radius-xs: 4px;
+	--radius-xxs: 8px;
+	--radius-sm: 12px;
+	--radius-md: 16px;
+	--radius-lg: 24px;
+	--radius-xl: 40px;
+
+	/*
+   * Transitions
+   */
+	--transition-base: all 0.3s ease;
+
+	/*
+   * Borders
+   */
+	--stroke-base: 1px solid var(--color-black);
+	--stroke-transparent: 1px solid transparent;
+
+	/*
+   * Shadows
+   */
+	--shadow-base: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+	/*
+   * =================================================
+   *  Contextual Tokens
+   * =================================================
+   */
+}

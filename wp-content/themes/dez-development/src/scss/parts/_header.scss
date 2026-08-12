@@ -1,0 +1,230 @@
+.header {
+	position: sticky;
+	top: 0;
+	z-index: 101;
+	background-color: var(--color-white);
+	box-shadow: var(--shadow-base);
+
+	&__inner {
+		@include repel;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+
+		@include lg {
+			// grid-template-columns: 1fr auto;
+		}
+	}
+
+	&__logo {
+		justify-self: start;
+
+		a {
+			display: flex;
+			align-items: center;
+		}
+
+		svg,
+		img {
+			display: block;
+			width: auto;
+		}
+	}
+
+	&__menu {
+		justify-self: center;
+
+		@include lg {
+			display: none;
+		}
+
+		ul {
+			display: flex;
+			align-items: center;
+			gap: 32px;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		// top-level links
+		ul > li > a,
+		nav > ul > li > a {
+			text-decoration: none;
+			font-weight: var(--font-medium);
+			transition: opacity 0.2s ease;
+			color: var(--color-dark);
+
+			&[aria-current='page'] {
+				font-weight: var(--font-extra-bold);
+				color: var(--color-primary);
+			}
+
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+
+		// ── Dropdown submenu ───────────────
+		.menu-item-has-children {
+			position: relative;
+
+			> a {
+				display: inline-flex;
+				align-items: center;
+				gap: 2px;
+
+				&::after {
+					content: '';
+					flex-shrink: 0;
+					width: 24px;
+					height: 24px;
+					background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3E%3Cmask id='a' width='24' height='24' x='0' y='0' maskUnits='userSpaceOnUse' style='mask-type:alpha'%3E%3Cpath fill='%23d9d9d9' d='M0 0h24v24H0z'/%3E%3C/mask%3E%3Cg mask='url(%23a)'%3E%3Cpath fill='%231c1b1f' d='m12 15.4-6-6L7.4 8l4.6 4.6L16.6 8 18 9.4z'/%3E%3C/g%3E%3C/svg%3E");
+					background-repeat: no-repeat;
+					background-size: contain;
+					transition: transform 0.25s ease;
+				}
+			}
+
+			&:hover > a {
+				text-decoration: none;
+				cursor: default;
+				&::after {
+					transform: rotate(180deg);
+				}
+			}
+
+			.sub-menu {
+				// reset flex that ul inherits from parent rule
+				display: block;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				transform: translateY(6px);
+				background: var(--color-white);
+				border-radius: var(--radius-xs);
+				box-shadow: 0 8px 28px rgba(0, 0, 0, 0.13);
+				list-style: none;
+				margin: 0;
+				padding: 6px 0;
+				z-index: 200;
+				opacity: 0;
+				pointer-events: none;
+				transition:
+					opacity 0.22s ease,
+					transform 0.22s ease;
+
+				&::before {
+					content: '';
+					position: absolute;
+					bottom: 100%;
+					left: 0;
+					right: 0;
+					height: 12px;
+				}
+
+				li {
+					list-style: none;
+				}
+
+				a {
+					display: block;
+					padding: 10px 20px;
+					white-space: nowrap;
+					font-size: var(--size-sm);
+					color: var(--color-dark);
+					text-decoration: none;
+					opacity: 1;
+					transition:
+						color 0.18s ease,
+						background 0.18s ease;
+
+					&[aria-current='page'] {
+						color: var(--color-primary);
+					}
+
+					&:hover {
+						color: var(--color-primary);
+						background: var(--color-light, #f7f7f7);
+					}
+				}
+			}
+
+			&:hover .sub-menu {
+				opacity: 1;
+				pointer-events: all;
+				transform: translateY(0);
+			}
+		}
+	}
+
+	&__cta {
+		display: flex;
+		justify-self: end;
+		align-items: center;
+		gap: 15px;
+		flex-wrap: nowrap;
+	}
+
+	&__cta-mobile {
+		margin-top: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		a {
+			width: 100%;
+		}
+	}
+
+	&__mobile-menu-button {
+		@include reset-button;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+
+		svg {
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+	}
+
+	@include xxl {
+		&__cta {
+			flex-direction: column;
+			a {
+				width: 100%;
+			}
+		}
+		&__menu {
+			ul {
+				gap: 20px;
+			}
+		}
+		&__logo {
+			svg {
+				width: 120px;
+			}
+		}
+	}
+
+	@include lg {
+		&__inner {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+		&__cta > .header__cta-button {
+			display: none;
+		}
+		&__logo {
+			svg {
+				width: 100px;
+			}
+		}
+	}
+
+	@include lg {
+		&__cta > .header__cta-button {
+			display: none;
+		}
+	}
+}

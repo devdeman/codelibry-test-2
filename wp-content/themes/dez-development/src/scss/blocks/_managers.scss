@@ -1,0 +1,184 @@
+.managers {
+	&__inner {
+		padding: 98px 0;
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		gap: 30px;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 66%;
+			height: 100%;
+			background: var(--color-black);
+			z-index: -1;
+			border-radius: var(--radius-xs);
+		}
+	}
+
+	&__box {
+		padding: 0 26px 0 60px;
+
+		.buttons {
+			margin-top: 40px;
+		}
+	}
+
+	&__content {
+		h2 {
+			margin-bottom: 32px;
+		}
+		h4 {
+			margin-bottom: 16px;
+			font-size: var(--size-sm);
+			line-height: var(--leading-flat);
+			font-weight: var(--font-bold);
+			text-transform: uppercase;
+		}
+		p {
+			line-height: var(--leading-relaxed);
+			letter-spacing: 0.1px;
+		}
+	}
+
+	&__manager {
+		padding: 32px;
+		background: var(--color-white);
+		border: 1px solid var(--color-border-gray);
+
+		&-label {
+			font-family: var(--font-primary);
+			font-size: var(--size-sm);
+			font-weight: var(--font-bold);
+			text-transform: uppercase;
+			color: var(--color-primary);
+			margin-bottom: 23px;
+		}
+
+		&-profile {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+			padding-bottom: 23px;
+			margin-bottom: 24px;
+			border-bottom: 1px solid var(--color-border-gray);
+		}
+
+		&-photo {
+			border-radius: 50%;
+			overflow: hidden;
+			flex-shrink: 0;
+
+			img {
+				min-width: 62px !important;
+				width: 62px !important;
+				height: 62px !important;
+				object-fit: cover;
+			}
+		}
+
+		&-name {
+			font-family: var(--font-primary);
+			font-size: 20px;
+			font-weight: var(--font-extra-bold);
+			color: var(--color-dark);
+			margin-bottom: 8px;
+			line-height: var(--leading-normal);
+			letter-spacing: 0.2px;
+		}
+
+		&-position {
+			color: var(--color-gray);
+			line-height: var(--leading-relaxed);
+		}
+
+		&-contacts {
+			display: flex;
+			flex-direction: column;
+			gap: 24px;
+			margin-bottom: 24px;
+		}
+
+		&-contact {
+			display: flex;
+			align-items: center;
+			gap: 7px;
+			font-size: var(--size-h6);
+			color: var(--color-dark);
+			line-height: var(--leading-relaxed);
+
+			a {
+				color: var(--color-dark);
+				text-decoration: none;
+				line-height: var(--leading-relaxed);
+				transition: var(--transition-base);
+
+				&:hover {
+					color: var(--color-primary);
+				}
+			}
+
+			&-icon {
+				width: 32px;
+				height: 32px;
+
+				svg {
+					min-width: 32px;
+					width: 32px;
+					height: 32px;
+				}
+			}
+		}
+
+		.buttons {
+			a {
+				width: 100%;
+			}
+		}
+	}
+
+	@include lg {
+		&__inner {
+			padding: 50px 0 0 0;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+
+			&::after {
+				width: 100%;
+				height: 60%;
+			}
+		}
+
+		&__box {
+			padding: 0 18px;
+		}
+
+		&__manager {
+			margin-left: 0;
+			margin: 0 18px;
+		}
+	}
+
+	@include md {
+		&__inner {
+			gap: rem(32);
+
+			&::after {
+				height: 55%;
+			}
+		}
+
+		&__box {
+			padding: 0 16px;
+		}
+
+		&__manager {
+			margin: 0 16px;
+			padding: 22px 16px;
+		}
+	}
+}

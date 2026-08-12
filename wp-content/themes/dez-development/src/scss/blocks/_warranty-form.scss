@@ -1,0 +1,28 @@
+.warranty-form {
+	&__header {
+		margin-bottom: 60px;
+	}
+
+	&__title {
+		color: var(--color-black);
+	}
+
+	.wpcf7-form {
+		gap: 24px;
+	}
+
+	.wpcf7-submit {
+		margin-top: -6px;
+		width: auto;
+	}
+
+	@include md {
+		&__header {
+			margin-bottom: 32px;
+		}
+
+		.wpcf7-submit {
+			width: 100%;
+		}
+	}
+}

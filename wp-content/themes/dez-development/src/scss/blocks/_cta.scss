@@ -1,0 +1,39 @@
+.cta {
+	padding: 223px 0;
+
+	.cover {
+		min-block-size: auto;
+		min-block-size: auto;
+	}
+
+	.buttons {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__content {
+		h2 {
+			margin-bottom: 1rem;
+			font-size: var(--size-h2s);
+		}
+
+		p {
+			margin: 0 auto 40px auto;
+			max-width: 630px;
+			font-size: 20px;
+			line-height: var(--leading-relaxed);
+			font-weight: var(--font-medium);
+			letter-spacing: 0.2px;
+		}
+	}
+
+	@include lg {
+		padding: 120px 0;
+	}
+
+	@include mds {
+		.buttons {
+			flex-direction: column;
+		}
+	}
+}
